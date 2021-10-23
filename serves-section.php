@@ -1,8 +1,6 @@
 <?php
-session_start();
 include ("topnav.php");
 include ("connect.php");
-
 ?>
 <?php
 $row_category=array();
