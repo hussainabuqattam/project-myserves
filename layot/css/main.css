@@ -2283,3 +2283,12 @@ margin-bottom: -20px;
   .alert .fa {
     margin-right:.3em;
   }
+  .test-login{
+    display: none;
+  }
+  .user-nav{
+    display: none;
+  }
+  .customer-nav{
+    display: none;
+  }

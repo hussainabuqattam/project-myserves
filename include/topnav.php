@@ -1,7 +1,7 @@
 
 
  <!--start navbar-->
- <nav class="navbar navbar-edit navbar-expand-lg navbar-light back-color-nav">
+ <nav class="navbar navbar-edit navbar-expand-lg navbar-light back-color-nav <?= !isset($_SESSION['userid']) ? "test-login" : "" ?> <?= (isset($_SESSION['usertype']) && $_SESSION['usertype'] == 1) ? "user-nav" : "customer-nav" ?>">
                     <a class="navbar-brand logo" href="index.php"><span>خد</span>متك</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,8 +22,7 @@
                             default:
                             echo  '';
                         }
-                    }     
-                   ?>
+                    ?>
                         </li>
                         <li class="nav-item">                                              
                         <a class="nav-link  main-text-nav" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,7 +32,7 @@
                                 <a class="dropdown-item" href="freelansiter-section.php"><i class="fas fa-laptop-house"></i>قسم العمل الحر</a>
                                 <a class="dropdown-item" href="serves-section.php"><i class="far fa-building"></i>قسم الخدمات</a>
                             </div>
-                        </li>
+                        </li><?php } ?>
                         <?php  if(isset($_SESSION['userid'])) { ?>
                         <li class="nav-item">
                           <a class="nav-link main-text-nav" href="order.php?do=Manage"><i class="fas fa-briefcase"></i>الخدمات المطلوبة</a>
@@ -53,7 +52,6 @@
                                     default:
                                     echo  '';
                                 }
-                            }     
                             ?>
                         </li>
                         <!--start serch-->
@@ -67,7 +65,7 @@
                                         <div id="countrylist"></div>
                                     </form>
                             </div>
-                        </li>
+                        </li> <?php } ?>
                          <!--end serch-->
                          <!--start notification-->
                          <?php

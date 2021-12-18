@@ -8,9 +8,6 @@
 
    if(isset($_SESSION['admin'])){
 ?>
-
-if(isset($_SESSION['admin'])){
-?>
 <!--start main-content-->
  <div class="wrapper">
  <div class="panel post">
