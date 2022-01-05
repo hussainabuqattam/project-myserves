@@ -205,7 +205,7 @@
                             </div>
                         </li>
                         <?php }else {
-                            echo "<a href='main-login.php'class='btn  btn-outline-light'style='padding: 10px 45px;'><i class='fas fa-sign-in-alt'></i>&nbsp;سجل الان</a>";
+                            echo "<a href='main-login.php'class='btn  btn-outline-light'style='padding: 10px 45px;margin-right: -65px;'><i class='fas fa-sign-in-alt'></i>&nbsp;تسجيل الدخول</a>";
                             } ?>
                          <!--end profile-->
                     </ul>

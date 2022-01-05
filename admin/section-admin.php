@@ -131,17 +131,7 @@
             $imageExtension = strtolower($imageName);
             $image = $imageName;
             move_uploaded_file($imageTemp,'layot/img/' .$image);
-            
 
-
-            $check_main = $con->prepare("SELECT * FROM main_categories");
-            $check_main ->execute();
-            $check_m = $check_main->fetchAll();
-            if($name_main === $check_m['title_cat']) {
-                echo "<script>alert('هذا القسم موجود بالفعل ');</script>";
-                $Location = "section-admin.php";
-                redirectHome($Location);
-                } else {
                     $insert = $con->prepare("INSERT INTO main_categories (title_cat,type,img) VALUES(:zname , :ztype ,:zimg)");
                     $insert->execute(array(
                         'zname' => $name_main,
@@ -151,7 +141,6 @@
                     echo "<script>alert('تم إضافة القسم بنجاح');</script>";
                     $Location = "section-admin.php?do=Manage";
                     redirectHome($Location);
-        }
         }
 ?>
        <!--end add section-->
@@ -165,8 +154,6 @@
       $main_c = isset($_GET['main_c']) && is_numeric($_GET['main_c']) ? intval($_GET['main_c']) : 0;
 
       $check = checkItem('id', "main_categories", $main_c);
-
-      // If There's Such ID Show The Form
       
       if($check > 0){ 
       
@@ -175,11 +162,8 @@
           $stmt->bindParam(":zmainc",$main_c);
 
           $stmt->execute();
-
-          echo "<script>alert('تم حذف القسم');</script>";
           $Location = "section-admin.php";
-
-          redirectHome($Location,0);
+          redirectHome($Location);
   
       } else {
 
