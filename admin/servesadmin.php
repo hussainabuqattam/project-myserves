@@ -13,7 +13,8 @@
 
         include ("include/navadmin.php");
 
-   $stmt1 = $con->prepare("SELECT * ,post.RegStatus as Reg
+   $stmt1 = $con->prepare("SELECT * ,post.id as Order_id,
+                                     post.RegStatus as Reg
                                     ,post.date as add_data,
                                      post.id as ID,
                                      sub_category.Name as Name,
@@ -26,6 +27,8 @@
     ");
    $stmt1 ->execute();
    $row1 = $stmt1->fetchAll();
+
+
    
 
 ?>
@@ -57,14 +60,19 @@
                           </tr>
                       </thead>
                       <tbody>
-                      <?php foreach($row1 as $post){ ?>
+                      <?php foreach($row1 as $post){
+                             $stmt3 = $con->prepare("SELECT *,count(id) as order_count FROM orders WHERE post_id = ?");
+                             $stmt3->execute([$post['Order_id']]);
+                             $order = $stmt3->fetch();
+                            //  var_dump($order);die();
+                          ?>
                           <tr>
                               <td><?php echo $post["ID"] ?></td>
                               <td><?php echo $post["title"] ?></td>
                               <td><?php echo $post["TYPE_MAIN"] ?></td>
                               <td><?php echo $post["NAME_MAIN"] ?></td>
                               <td><?php echo $post["Name"] ?></td>
-                              <td>--------</td>
+                              <td><?php echo $order["order_count"] ?></td>
                               <td><?php echo $post["add_data"] ?></td>
                               <td>
                                  <a href="comment.php?do=Manage&comment_id=<?php echo $post["ID"] ?>"><button type="button" class="btn btn-success"><i class="far fa-comment-alt"></i> رؤية التعليقات</button></a>

@@ -69,7 +69,7 @@ if(isset($_SESSION['userid']))
                                         'zmail' =>$email,
                                         'postType'=>$_POST['type']
                                     ));
-                            $successMsg ='<script>alert("  You Are Now Registerd User ")</script>';
+                            $successMsg ='<script>alert("تم التسجيل بالنجاح")</script>';
                     }
                 } 
             }
